@@ -1,0 +1,11 @@
+# Build results
+bin/
+obj/
+
+# JetBrains Rider
+.idea/
+
+# User-specific files
+*.user
+*.userosscache
+*.sln.docstates
