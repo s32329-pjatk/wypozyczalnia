@@ -6,7 +6,8 @@ public class Rental
     public Device Device { get; set; }
     public DateTime StartDate { get; set; }
     public DateOnly PlannedReturnedDate { get; set; }
-    public DateTime? ActualReturnDate { get; set; }
+    public DateTime ActualReturnDate { get; set; }
+    public decimal ExtraFee { get; set; }
     
     public Rental(User user, Device device, DateTime startDate, DateOnly plannedReturnedDate)
     {
