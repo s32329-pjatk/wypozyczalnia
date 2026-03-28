@@ -30,6 +30,13 @@ public class DeviceService
         return _devices.Values.ToList();
     }
 
+    public List<Device> GetAvailableDevices()
+    {
+        return _devices.Values
+            .Where(device => device.AvailabilityStatus == AvailabilityStatus.Available)
+            .ToList();
+    }
+
     public void SetDeviceAsMaintenance(int deviceId)
     {
         if (!_devices.TryGetValue(deviceId, out Device? device))

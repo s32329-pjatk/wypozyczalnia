@@ -16,4 +16,11 @@ public abstract class User
         LastName = lastName;
         UserType = userType;
     }
+
+    public int Id => _id;
+
+    public override string ToString()
+    {
+        return $"{Id} {FirstName} {LastName} ({UserType})";
+    }
 }

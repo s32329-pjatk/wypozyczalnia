@@ -10,5 +10,9 @@ public class Laptop : Device
 
     public int RamAmount { get; set; }
     public int DiskStorageSize { get; set; }
-    
+
+    public override string ToString()
+    {
+        return $"{base.ToString()} - RAM: {RamAmount} GB, storage: {DiskStorageSize} GB";
+    }
 }

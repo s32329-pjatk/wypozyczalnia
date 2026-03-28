@@ -17,4 +17,9 @@ public abstract class Device
     }
 
     public int Id => _id;
+
+    public override string ToString()
+    {
+        return $"{Id} {Name} ({Manufacturer}) - {AvailabilityStatus}";
+    }
 }

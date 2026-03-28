@@ -5,9 +5,9 @@ public class RentalService
     private static int RENTAL_LIMIT_FOR_STUDENT = 2;
     private static int RENTAL_LIMIT_FOR_EMPLOYEE = 5;
     
-    private List<Rental> rentals = [];
-    private Dictionary<UserType, int> _userTypeToLimit = new();
-    private IExtraFeeCalucatorStrategy _extraFeeCalucatorStrategy;
+    private readonly List<Rental> rentals = [];
+    private readonly Dictionary<UserType, int> _userTypeToLimit = new();
+    private readonly IExtraFeeCalucatorStrategy _extraFeeCalucatorStrategy;
     
     
     public RentalService(IExtraFeeCalucatorStrategy extraFeeCalucatorStrategy)
@@ -41,10 +41,15 @@ public class RentalService
 
     public void ReturnDevice(Rental rental)
     {
+        if (rental.ActualReturnDate != null)
+        {
+            throw new Exception("Rental has already been returned");
+        }
+
         rental.ActualReturnDate = DateTime.Now;
         decimal extraFee = _extraFeeCalucatorStrategy.CalculateExtraFee(rental);
         rental.ExtraFee = extraFee;
-        
+        rental.Device.AvailabilityStatus = AvailabilityStatus.Available;
     }
 
     public List<Rental> GetUsersRentals(User user)
@@ -55,5 +60,17 @@ public class RentalService
     public List<Rental> GetActiveUserRentals(User user)
     {
         return rentals.Where(rental => rental.User == user && rental.ActualReturnDate == null).ToList();
+    }
+
+    public List<Rental> GetOverdueRentals()
+    {
+        return rentals
+            .Where(rental => rental.ActualReturnDate == null && rental.IsOverdue())
+            .ToList();
+    }
+
+    public List<Rental> GetAllRentals()
+    {
+        return rentals.ToList();
     }
 }

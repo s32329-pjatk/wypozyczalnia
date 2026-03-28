@@ -2,7 +2,7 @@ namespace wypozyczalnia;
 
 public class UserService
 {
-    LinkedList<User> _users = new LinkedList<User>();
+    private readonly LinkedList<User> _users = [];
 
     public Employee AddEmployee(string firstName, string lastName)
     {
@@ -17,5 +17,9 @@ public class UserService
         _users.AddLast(student);
         return student;
     }
-    
+
+    public List<User> GetAllUsers()
+    {
+        return _users.ToList();
+    }
 }

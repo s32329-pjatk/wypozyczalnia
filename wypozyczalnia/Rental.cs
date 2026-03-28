@@ -24,4 +24,10 @@ public class Rental
         else dayToCheck = DateOnly.FromDateTime(DateTime.Now);
         return dayToCheck > PlannedReturnedDate;
     }
+
+    public override string ToString()
+    {
+        string returnInfo = ActualReturnDate == null ? "not returned" : ActualReturnDate.ToString();
+        return $"{User.FirstName} {User.LastName} {Device.Name}, start: {StartDate}, planned return: {PlannedReturnedDate}, actual return: {returnInfo}, overdue: {IsOverdue()}, extra fee: {ExtraFee}";
+    }
 }

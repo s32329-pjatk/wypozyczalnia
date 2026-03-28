@@ -10,4 +10,9 @@ public class Camera : Device
         Zoom = zoom;
         IsDigital = isDigital;
     }
+
+    public override string ToString()
+    {
+        return $"{base.ToString()} - Zoom: {Zoom}x, digital: {IsDigital}";
+    }
 }

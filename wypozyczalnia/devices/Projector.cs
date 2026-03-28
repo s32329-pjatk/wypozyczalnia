@@ -10,4 +10,9 @@ public class Projector : Device
         Power = power;
         this.RecommendedDistance = recommendedDistance;
     }
+
+    public override string ToString()
+    {
+        return $"{base.ToString()} - Power: {Power}, distance: {RecommendedDistance} m";
+    }
 }
