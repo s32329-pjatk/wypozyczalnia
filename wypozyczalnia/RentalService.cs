@@ -35,6 +35,7 @@ public class RentalService
         DateOnly plannedReturnDate = DateOnly.FromDateTime(DateTime.Now).AddDays(duration);
         Rental rental =  new Rental(user, device, DateTime.Now, plannedReturnDate);
         rentals.Add(rental);
+        device.AvailabilityStatus = AvailabilityStatus.Unavailable;
         return rental;
     }
 
