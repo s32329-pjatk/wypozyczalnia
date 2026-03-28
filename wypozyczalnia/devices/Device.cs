@@ -8,7 +8,7 @@ public abstract class Device
     public string Manufacturer { get; protected set; }
     private static int _idCounter = 0;
 
-    protected Device(String name, String manufacturer)
+    protected Device(string name, string manufacturer)
     {
         _id = _idCounter++;
         AvailabilityStatus = AvailabilityStatus.Available;
