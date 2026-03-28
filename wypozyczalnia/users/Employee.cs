@@ -1,6 +1,6 @@
 namespace wypozyczalnia;
 
-public interface IDevice
+public class Employee : User
 {
     
 }

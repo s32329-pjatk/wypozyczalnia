@@ -1,5 +1,5 @@
 namespace wypozyczalnia;
 
-public class Camera : IDevice
+public class Camera : Device
 {
 }

@@ -1,5 +1,5 @@
 namespace wypozyczalnia;
 
-public class Projector : IDevice
+public class Projector : Device
 {
 }
